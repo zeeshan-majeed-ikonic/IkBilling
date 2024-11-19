@@ -857,8 +857,8 @@ class IkBillingHelper(private val context: Context) {
         return isClientReady
     }
 
-    fun enableIkLogs(isEnableLog: Boolean = true): IkBillingHelper {
-        enableLog = isEnableLog
+    fun enableIkLogs(showLogs: Boolean = true): IkBillingHelper {
+        enableLog = showLogs
         return this
     }
 

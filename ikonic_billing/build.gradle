@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("maven-publish")
 }
 
 android {
@@ -39,4 +40,23 @@ dependencies {
     androidTestImplementation libs.androidx.espresso.core
 
     implementation("com.android.billingclient:billing-ktx:7.1.1")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.github.zeeshan-majeed-ikonic'
+                artifactId = 'IkBilling'
+                version = '1.0.0'
+            }
+            debug(MavenPublication) {
+                from components.debug
+                groupId = 'com.github.zeeshan-majeed-ikonic'
+                artifactId = 'IkBilling'
+                version = '1.0.0'
+            }
+        }
+    }
 }

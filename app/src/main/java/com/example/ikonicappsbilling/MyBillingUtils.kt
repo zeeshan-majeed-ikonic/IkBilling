@@ -3,6 +3,7 @@ package com.example.ikonicappsbilling
 import android.app.Activity
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
+import com.android.billingclient.api.Purchase
 import com.example.ikonic_billing.enum_errors.IkBillingErrors
 import com.example.ikonic_billing.helper.IkBillingHelper
 import com.example.ikonic_billing.interfaces.IkBillingClientListeners
@@ -40,6 +41,10 @@ object MyBillingUtils {
 
     fun getSubsPrice(context: Context): String {
         return IkBillingHelper(context)
+            .getProductPriceByKey("subscription-key", "")?.price ?: ""
+    }
+    fun getSubsPriceWithOffer(context: Context): String {
+        return IkBillingHelper(context)
             .getProductPriceByKey("subscription-key", "offer-key")?.price ?: ""
     }
 
@@ -60,18 +65,18 @@ object MyBillingUtils {
     }
     private fun attachIkBillingListeners(ikBillingHelper: IkBillingHelper) {
         ikBillingHelper.setBillingEventListener(object : IkBillingEventListeners {
-            override fun onIkProductsPurchased(purchases: List<com.android.billingclient.api.Purchase?>) {
+            override fun onIkProductsPurchased(purchases: List<Purchase?>) {
                 isPremiumUser.value =
                     ikBillingHelper.isSubsPremiumUser() || ikBillingHelper.isInAppPremiumUser()
             }
 
-            override fun onIkPurchaseAcknowledged(purchase: com.android.billingclient.api.Purchase) {
+            override fun onIkPurchaseAcknowledged(purchase: Purchase) {
                 isPremiumUser.value =
                     ikBillingHelper.isSubsPremiumUser() || ikBillingHelper.isInAppPremiumUser()
 
             }
 
-            override fun onIkPurchaseConsumed(purchase: com.android.billingclient.api.Purchase) {
+            override fun onIkPurchaseConsumed(purchase: Purchase) {
 
             }
 
