@@ -1,4 +1,4 @@
-package com.example.ikonic_billing.enum_errors
+package com.inapp.ikonic_billing.enum_errors
 
 import androidx.annotation.Keep
 

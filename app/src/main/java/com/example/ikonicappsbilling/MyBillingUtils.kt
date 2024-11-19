@@ -4,10 +4,10 @@ import android.app.Activity
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.android.billingclient.api.Purchase
-import com.example.ikonic_billing.enum_errors.IkBillingErrors
-import com.example.ikonic_billing.helper.IkBillingHelper
-import com.example.ikonic_billing.interfaces.IkBillingClientListeners
-import com.example.ikonic_billing.interfaces.IkBillingEventListeners
+import com.inapp.ikonic_billing.enum_errors.IkBillingErrors
+import com.inapp.ikonic_billing.helper.IkBillingHelper
+import com.inapp.ikonic_billing.interfaces.IkBillingClientListeners
+import com.inapp.ikonic_billing.interfaces.IkBillingEventListeners
 
 object MyBillingUtils {
 

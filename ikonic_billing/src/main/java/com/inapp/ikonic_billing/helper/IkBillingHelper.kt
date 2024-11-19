@@ -1,4 +1,4 @@
-package com.example.ikonic_billing.helper
+package com.inapp.ikonic_billing.helper
 
 import android.app.Activity
 import android.content.Context
@@ -17,10 +17,10 @@ import com.android.billingclient.api.Purchase
 import com.android.billingclient.api.PurchasesUpdatedListener
 import com.android.billingclient.api.QueryProductDetailsParams
 import com.android.billingclient.api.QueryPurchasesParams
-import com.example.ikonic_billing.enum_errors.IkBillingErrors
-import com.example.ikonic_billing.interfaces.IkBillingClientListeners
-import com.example.ikonic_billing.interfaces.IkBillingEventListeners
-import com.example.ikonic_billing.model.IkBillingProduct
+import com.inapp.ikonic_billing.enum_errors.IkBillingErrors
+import com.inapp.ikonic_billing.interfaces.IkBillingClientListeners
+import com.inapp.ikonic_billing.interfaces.IkBillingEventListeners
+import com.inapp.ikonic_billing.model.IkBillingProduct
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -1,4 +1,4 @@
-package com.example.ikonic_billing.model
+package com.inapp.ikonic_billing.model
 
 import androidx.annotation.Keep
 import com.android.billingclient.api.ProductDetails

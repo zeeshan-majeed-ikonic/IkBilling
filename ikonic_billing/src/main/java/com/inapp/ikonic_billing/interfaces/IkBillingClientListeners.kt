@@ -1,4 +1,4 @@
-package com.example.ikonic_billing.interfaces
+package com.inapp.ikonic_billing.interfaces
 
 interface IkBillingClientListeners {
     fun onIkPurchasesUpdated()
