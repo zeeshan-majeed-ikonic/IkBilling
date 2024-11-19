@@ -1,15 +1,15 @@
-#### Ik Apps Billing
+# Ik Apps Billing
 
-This is a simple and straight-forward implementation of Android 7.1.1 In-App-Billing API
-> Support both In-App and Subscriptions.
->
-### Getting Started 
+### This is a simple and straight-forward implementation of Android 7.1.1 In-App-Billing API
+Support both In-App and Subscriptions.
 
-## Step 01:
+## Getting Started 
+
+### Step 01:
 
 > Add Maven dependancies:
 
-# Groovy-DSL
+#### Groovy-DSL
 
 ```kotlin 
     repositories {
@@ -18,7 +18,7 @@ This is a simple and straight-forward implementation of Android 7.1.1 In-App-Bil
           maven { uri("https://jitpack.io") }
       }
 ```
-# Kotlin-DSL
+#### Kotlin-DSL
 
 ```kotlin 
     repositories {
@@ -28,18 +28,18 @@ This is a simple and straight-forward implementation of Android 7.1.1 In-App-Bil
     }
 ```
 
-## Step 02:
+### Step 02:
 
-# Add gradle dependencies:
+## Add gradle dependencies:
 
 ```kotlin 
     implementation("com.android.billingclient:billing-ktx:7.1.1")
     implementation("com.zeeshan-majeed-ikonic:IkBilling:1.0.0")
 ```
 
-## Step 03:
+### Step 03:
 
-# Initilaize IkBillingClass
+## Initilaize IkBillingClass
 
 ```kotlin 
     IkBillingHelper(context)
@@ -57,9 +57,9 @@ This is a simple and straight-forward implementation of Android 7.1.1 In-App-Bil
             .initIkBilling()
 ```
 
-## Step 04:
+### Step 04:
 
-# Billing Client listeners
+## Billing Client listeners
 
 ```kotlin 
     IkBillingHelper(context)
@@ -84,8 +84,8 @@ This is a simple and straight-forward implementation of Android 7.1.1 In-App-Bil
             .initIkBilling()
 ```
 
-## Step 05(optional):
-# Enable logging
+### Step 05(optional):
+## Enable logging
 
 ```kotlin 
     IkBillingHelper(context)
@@ -95,8 +95,8 @@ This is a simple and straight-forward implementation of Android 7.1.1 In-App-Bil
             .initIkBilling()
 ```
 
-## Step 06:
-# Get prices
+### Step 06:
+## Get prices
 
 InApp price
 ```kotlin 
@@ -118,8 +118,8 @@ Subscription price
     }
 ```
 
-## Step 07:
-# Buy Products
+### Step 07:
+## Buy Products
 
 Buy InApp
 
@@ -147,9 +147,9 @@ Subscribe subscription
     }
 ```
 
-## Step 08:
+### Step 08:
 
-# Handle Billing Listeners 
+## Handle Billing Listeners 
 
 ```kotlin 
     IkBillingHelper(this).setBillingEventListener(object : IkBillingEventListeners {
