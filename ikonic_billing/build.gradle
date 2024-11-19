@@ -47,13 +47,13 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
                 from components.release
-                groupId = 'com.github.zeeshan-majeed-ikonic'
+                groupId = 'com.github.zeeshan-majeed-ikonci'
                 artifactId = 'IkBilling'
                 version = '1.0.0'
             }
             debug(MavenPublication) {
                 from components.debug
-                groupId = 'com.github.zeeshan-majeed-ikonic'
+                groupId = 'com.github.zeeshan-majeed-ikonci'
                 artifactId = 'IkBilling'
                 version = '1.0.0'
             }
