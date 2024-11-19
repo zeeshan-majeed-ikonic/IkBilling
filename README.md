@@ -13,10 +13,9 @@ Support both In-App and Subscriptions.
 
 ```kotlin 
     repositories {
-          google()
-          mavenCentral()
-          maven { uri("https://jitpack.io") }
-      }
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
 ```
 #### Kotlin-DSL
 
