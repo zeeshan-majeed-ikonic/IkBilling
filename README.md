@@ -34,7 +34,7 @@ Support both In-App and Subscriptions.
 
 ```kotlin 
     implementation("com.android.billingclient:billing-ktx:7.1.1")
-    implementation("com.zeeshan-majeed-ikonic:IkBilling:1.0.0")
+    implementation("com.zeeshan-majeed-ikonci:IkBilling:1.0.0")
 ```
 
 ### Step 03:
