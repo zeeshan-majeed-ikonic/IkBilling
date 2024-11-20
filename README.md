@@ -34,7 +34,7 @@ HelperTag: [![](https://jitpack.io/v/zeeshan-majeed-ikonci/IkBilling.svg)](https
 
 ```kotlin 
     implementation("com.android.billingclient:billing-ktx:7.1.1")
-    implementation("com.github.zeeshan-majeed-ikonci:IkBilling:HelperTag")
+    implementation("com.github.zeeshan-majeed-ikonic:IkBilling:HelperTag")
 ```
 
 ### Step 03:
