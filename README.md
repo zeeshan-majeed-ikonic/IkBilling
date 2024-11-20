@@ -1,6 +1,6 @@
 # Ik Apps Billing
 
-Simple and efficient library supporting both In-App Purchases and Subscriptions for Android.
+Simple and efficient library supporting both In-App Purchases and Subscriptions for Android. Using Google billing API version: 7.1.1
 
 ---
 
