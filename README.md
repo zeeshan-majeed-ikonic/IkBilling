@@ -30,11 +30,11 @@ Support both In-App and Subscriptions.
 ### Step 02:
 
 ## Add gradle dependencies:
-HelperTag: [![](https://jitpack.io/v/zeeshan-majeed-ikonci/IkBilling.svg)](https://jitpack.io/#zeeshan-majeed-ikonci/IkBilling)
+Version: [![](https://jitpack.io/v/zeeshan-majeed-ikonci/IkBilling.svg)](https://jitpack.io/#zeeshan-majeed-ikonci/IkBilling)
 
 ```kotlin 
     implementation("com.android.billingclient:billing-ktx:7.1.1")
-    implementation("com.github.zeeshan-majeed-ikonic:IkBilling:HelperTag")
+    implementation("com.github.zeeshan-majeed-ikonic:IkBilling:Version")
 ```
 
 ### Step 03:
