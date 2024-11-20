@@ -159,7 +159,6 @@ object MyBillingUtils {
                     }
                 }
             }
-
         })
     }
 }

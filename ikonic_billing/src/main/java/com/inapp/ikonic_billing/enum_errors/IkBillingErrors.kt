@@ -2,6 +2,11 @@ package com.inapp.ikonic_billing.enum_errors
 
 import androidx.annotation.Keep
 
+/**
+ * @author: Zeeshan
+ * @date: 19/11/2024
+ */
+
 @Keep
 enum class IkBillingErrors {
     DEVELOPER_ERROR,
