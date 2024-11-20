@@ -1,7 +1,8 @@
 # Ik Apps Billing
 
-### This is a simple and straight-forward implementation of Android 7.1.1 In-App-Billing API
-Support both In-App and Subscriptions.
+Simple and efficient library supporting both In-App Purchases and Subscriptions for Android.
+
+---
 
 ## **Get Started** 
 
