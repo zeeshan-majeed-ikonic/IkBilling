@@ -155,96 +155,36 @@ Subscribe subscription
 ```kotlin 
     IkBillingHelper(this).setBillingEventListener(object : IkBillingEventListeners {
             override fun onIkProductsPurchased(purchases: List<Purchase?>) {
-
+		Log.d(TAG, "onIkProductsPurchased")
             }
 
             override fun onIkPurchaseAcknowledged(purchase: Purchase) {
-
-
+		Log.d(TAG, "onIkPurchaseAcknowledged")
             }
 
             override fun onIkPurchaseConsumed(purchase: Purchase) {
-
+		Log.d(TAG, "onIkPurchaseConsumed")
             }
 
             override fun onIkBillingError(error: IkBillingErrors) {
                 when (error) {
-                    IkBillingErrors.DEVELOPER_ERROR -> {
-
-                    }
-
-                    IkBillingErrors.CLIENT_NOT_READY -> {
-
-                    }
-
-                    IkBillingErrors.CLIENT_DISCONNECTED -> {
-
-                    }
-
-                    IkBillingErrors.PRODUCT_NOT_EXIST -> {
-
-                    }
-
-                    IkBillingErrors.OFFER_NOT_EXIST -> {
-
-                    }
-
-                    IkBillingErrors.BILLING_ERROR -> {
-
-                    }
-
-                    IkBillingErrors.USER_CANCELED -> {
-
-                    }
-
-                    IkBillingErrors.SERVICE_UNAVAILABLE -> {
-
-                    }
-
-                    IkBillingErrors.BILLING_UNAVAILABLE -> {
-
-                    }
-
-                    IkBillingErrors.ITEM_UNAVAILABLE -> {
-
-                    }
-
-                    IkBillingErrors.ERROR -> {
-
-                    }
-
-                    IkBillingErrors.ITEM_ALREADY_OWNED -> {
-
-                    }
-
-                    IkBillingErrors.ITEM_NOT_OWNED -> {
-
-                    }
-
-                    IkBillingErrors.SERVICE_DISCONNECTED -> {
-
-                    }
-
-                    IkBillingErrors.ACKNOWLEDGE_ERROR -> {
-
-                    }
-
-                    IkBillingErrors.ACKNOWLEDGE_WARNING -> {
-
-                    }
-
-                    IkBillingErrors.OLD_PURCHASE_TOKEN_NOT_FOUND -> {
-
-                    }
-
-                    IkBillingErrors.INVALID_PRODUCT_TYPE_SET -> {
-
-                    }
-
-                    IkBillingErrors.CONSUME_ERROR -> {
-
-                    }
-                }
+                    	IkBillingErrors.DEVELOPER_ERROR -> Log.e(TAG, "Developer Error")
+            		IkBillingErrors.CLIENT_NOT_READY -> Log.e(TAG, "Client Not Ready")
+            		IkBillingErrors.CLIENT_DISCONNECTED -> Log.e(TAG, "Client Disconnected")
+            		IkBillingErrors.PRODUCT_NOT_EXIST -> Log.e(TAG, "Product Does Not Exist")
+            		IkBillingErrors.OFFER_NOT_EXIST -> Log.e(TAG, "Offer Does Not Exist")
+            		IkBillingErrors.BILLING_ERROR -> Log.e(TAG, "General Billing Error")
+            		IkBillingErrors.USER_CANCELED -> Log.e(TAG, "User Canceled")
+            		IkBillingErrors.SERVICE_UNAVAILABLE -> Log.e(TAG, "Service Unavailable")
+            		IkBillingErrors.BILLING_UNAVAILABLE -> Log.e(TAG, "Billing Unavailable")
+            		IkBillingErrors.ITEM_UNAVAILABLE -> Log.e(TAG, "Item Unavailable")
+            		IkBillingErrors.ITEM_ALREADY_OWNED -> Log.e(TAG, "Item Already Owned")
+            		IkBillingErrors.ITEM_NOT_OWNED -> Log.e(TAG, "Item Not Owned")
+            		IkBillingErrors.SERVICE_DISCONNECTED -> Log.e(TAG, "Service Disconnected")
+            		IkBillingErrors.ACKNOWLEDGE_ERROR -> Log.e(TAG, "Acknowledgment Error")
+            		IkBillingErrors.CONSUME_ERROR -> Log.e(TAG, "Consume Error")
+            		else -> Log.e(TAG, "Unknown Billing Error")
+		}
             }
 
         })
