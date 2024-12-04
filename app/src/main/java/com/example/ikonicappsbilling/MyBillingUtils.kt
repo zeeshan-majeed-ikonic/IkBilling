@@ -8,6 +8,9 @@ import com.inapp.ikonic_billing.IKBillingUtils
 import com.inapp.ikonic_billing.enum_class.IkBillingErrors
 import com.inapp.ikonic_billing.helper.listeners.IkClientListener
 import com.inapp.ikonic_billing.helper.listeners.IkEventListener
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 object MyBillingUtils {
 
@@ -20,15 +23,19 @@ object MyBillingUtils {
             .enableLogger(true)
             .setIkClientListener(object : IkClientListener {
                 override fun onPurchasesUpdated() {
-                    isPremiumUser.value = (ikBillingHelper.isHavingSubscription()
-                            || ikBillingHelper.isHavingInApp()
-                            || ikBillingHelper.isPremiumUser)
+                   CoroutineScope(Dispatchers.Main).launch {
+                       isPremiumUser.value = (ikBillingHelper.isHavingSubscription()
+                               || ikBillingHelper.isHavingInApp()
+                               || ikBillingHelper.isPremiumUser)
+                   }
                 }
 
                 override fun onClientReady() {
-                    isPremiumUser.value = (ikBillingHelper.isHavingSubscription()
-                            || ikBillingHelper.isHavingInApp()
-                            || ikBillingHelper.isPremiumUser)
+                    CoroutineScope(Dispatchers.Main).launch {
+                        isPremiumUser.value = (ikBillingHelper.isHavingSubscription()
+                                || ikBillingHelper.isHavingInApp()
+                                || ikBillingHelper.isPremiumUser)
+                    }
                 }
 
                 override fun onClientInitError() {
@@ -68,15 +75,19 @@ object MyBillingUtils {
     private fun attachIkBillingListeners(ikBillingHelper: IKBillingUtils) {
         ikBillingHelper.setIkEventListener(object : IkEventListener {
             override fun onProductsPurchased(purchases: List<Purchase?>) {
-                isPremiumUser.value = (ikBillingHelper.isHavingSubscription()
-                        || ikBillingHelper.isHavingInApp()
-                        || ikBillingHelper.isPremiumUser)
+                CoroutineScope(Dispatchers.Main).launch {
+                    isPremiumUser.value = (ikBillingHelper.isHavingSubscription()
+                            || ikBillingHelper.isHavingInApp()
+                            || ikBillingHelper.isPremiumUser)
+                }
             }
 
             override fun onPurchaseAcknowledged(purchase: Purchase) {
-                isPremiumUser.value = (ikBillingHelper.isHavingSubscription()
-                        || ikBillingHelper.isHavingInApp()
-                        || ikBillingHelper.isPremiumUser)
+                CoroutineScope(Dispatchers.Main).launch {
+                    isPremiumUser.value = (ikBillingHelper.isHavingSubscription()
+                            || ikBillingHelper.isHavingInApp()
+                            || ikBillingHelper.isPremiumUser)
+                }
             }
 
             override fun onPurchaseConsumed(purchase: Purchase) {

@@ -69,11 +69,21 @@ Version: [![](https://jitpack.io/v/zeeshan-majeed-ikonci/IkBilling.svg)](https:/
             .setIkClientListener(object : IkClientListener {
                 override fun onPurchasesUpdated() {
                     Log.d(TAG, "onPurchasesUpdated: ")
+                    CoroutineScope(Dispatchers.Main).launch {
+                        premiumStatus = (ikBillingHelper.isHavingSubscription()
+                                || ikBillingHelper.isHavingInApp()
+                                || ikBillingHelper.isPremiumUser)
+                    }
 
                 }
 
                 override fun onClientReady() {
                     Log.d(TAG, "onClientReady: ")
+                    CoroutineScope(Dispatchers.Main).launch {
+                        premiumStatus = (ikBillingHelper.isHavingSubscription()
+                                || ikBillingHelper.isHavingInApp()
+                                || ikBillingHelper.isPremiumUser)
+                    }
 
                 }
 
@@ -155,15 +165,25 @@ Subscribe subscription
 ```kotlin 
     IKBillingUtils(this).setIkEventListener(object : IkEventListener {
             override fun onProductsPurchased(purchases: List<Purchase?>) {
-		Log.d(TAG, "onIkProductsPurchased")
+		        Log.d(TAG, "onIkProductsPurchased")
+                CoroutineScope(Dispatchers.Main).launch {
+                    premiumStatus = (ikBillingHelper.isHavingSubscription()
+                            || ikBillingHelper.isHavingInApp()
+                            || ikBillingHelper.isPremiumUser)
+                }
             }
 
             override fun onPurchaseAcknowledged(purchase: Purchase) {
-		Log.d(TAG, "onIkPurchaseAcknowledged")
+		        Log.d(TAG, "onIkPurchaseAcknowledged")
+                CoroutineScope(Dispatchers.Main).launch {
+                    premiumStatus = (ikBillingHelper.isHavingSubscription()
+                            || ikBillingHelper.isHavingInApp()
+                            || ikBillingHelper.isPremiumUser)
+                }
             }
 
             override fun onPurchaseConsumed(purchase: Purchase) {
-		Log.d(TAG, "onIkPurchaseConsumed")
+		        Log.d(TAG, "onIkPurchaseConsumed")
             }
 
             override fun onBillingError(error: IkBillingErrors) {
