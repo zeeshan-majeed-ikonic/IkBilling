@@ -43,18 +43,18 @@ Version: [![](https://jitpack.io/v/zeeshan-majeed-ikonci/IkBilling.svg)](https:/
 ## Initilaize IkBillingClass
 
 ```kotlin 
-    IkBillingHelper(context)
-            .setInAppKeys(mutableListOf("your-inapp-id"))
-            .setSubKeys(mutableListOf("your-product-id"))
+    IKBillingUtils(context)
+            .setInAppProductKeys(mutableListOf("your-inapp-id"))
+            .setSubProductKeys(mutableListOf("your-product-id"))
             .initIkBilling()
 ```
 
  if consumable 
 
 ```kotlin 
-    IkBillingHelper(context)
-            .setInAppKeys(mutableListOf("your-inapp-id, inapp-consumable-key"))
-            .setSubKeys(mutableListOf("your-product-id, inapp-consumable-key"))
+    IKBillingUtils(context)
+            .setInAppProductKeys(mutableListOf("your-inapp-id, inapp-consumable-key"))
+            .setSubProductKeys(mutableListOf("your-product-id, inapp-consumable-key"))
             .initIkBilling()
 ```
 
@@ -63,22 +63,22 @@ Version: [![](https://jitpack.io/v/zeeshan-majeed-ikonci/IkBilling.svg)](https:/
 ## Billing Client listeners
 
 ```kotlin 
-    IkBillingHelper(context)
-            .setInAppKeys(mutableListOf("your-inapp-id"))
-            .setSubKeys(mutableListOf("your-product-id"))
-            .setBillingClientListener(object : IkBillingClientListeners {
-                override fun onIkPurchasesUpdated() {
-                    Log.d(TAG, "onIkPurchasesUpdated: ")
+    IKBillingUtils(context)
+            .setInAppProductKeys(mutableListOf("your-inapp-id"))
+            .setSubProductKeys(mutableListOf("your-product-id"))
+            .setIkClientListener(object : IkClientListener {
+                override fun onPurchasesUpdated() {
+                    Log.d(TAG, "onPurchasesUpdated: ")
 
                 }
 
-                override fun onIkClientReady() {
-                    Log.d(TAG, "onIkClientReady: ")
+                override fun onClientReady() {
+                    Log.d(TAG, "onClientReady: ")
 
                 }
 
-                override fun onIkClientInitError() {
-                    Log.d(TAG, "onIkClientInitError: ")
+                override fun onClientInitError() {
+                    Log.d(TAG, "onClientInitError: ")
                 }
 
             })
@@ -89,10 +89,10 @@ Version: [![](https://jitpack.io/v/zeeshan-majeed-ikonci/IkBilling.svg)](https:/
 ## Enable logging
 
 ```kotlin 
-    IkBillingHelper(context)
-            .setInAppKeys(mutableListOf("your-inapp-id"))
-            .setSubKeys(mutableListOf("your-product-id"))
-            .enableIkLogs(showLogs = true)
+    IKBillingUtils(context)
+            .setInAppProductKeys(mutableListOf("your-inapp-id"))
+            .setSubProductKeys(mutableListOf("your-product-id"))
+            .enableLogger(showLogs = true)
             .initIkBilling()
 ```
 
@@ -102,7 +102,7 @@ Version: [![](https://jitpack.io/v/zeeshan-majeed-ikonci/IkBilling.svg)](https:/
 InApp price
 ```kotlin 
     fun getInAppPrice(context: Context): String {
-        return IkBillingHelper(context).getProductPriceByKey("inapp-key")?.price ?: ""
+        return IKBillingUtils(context).getIkInAppProductPriceById("inapp-key")?.price ?: ""
     }
 ```
 
@@ -110,12 +110,12 @@ Subscription price
 
 ```kotlin 
     fun getSubsPrice(context: Context): String {
-        return IkBillingHelper(context)
-            .getProductPriceByKey("subscription-key", "")?.price ?: ""
+        return IKBillingUtils(context)
+            .getIkSubscriptionProductPriceById("subscription-key", "")?.price ?: ""
     }
     fun getSubsPriceWithOffer(context: Context): String {
-        return IkBillingHelper(context)
-            .getProductPriceByKey("subscription-key", "offer-key")?.price ?: ""
+        return IKBillingUtils(context)
+            .getIkSubscriptionProductPriceById("subscription-key", "offer-key")?.price ?: ""
     }
 ```
 
@@ -126,7 +126,7 @@ Buy InApp
 
 ```kotlin 
     fun buyInApp(activity: Activity){
-        IkBillingHelper(activity).buyIkInApp(activity,"inapp-key",false)
+    IKBillingUtils(activity).buyIkInApp(activity,"inapp-key",false)
     }
 ```
 
@@ -136,7 +136,7 @@ Subscribe subscription
 
 ```kotlin 
     fun subscribe(activity: Activity){
-        IkBillingHelper(activity).subscribeIkProduct(activity,"product-key","")
+    IKBillingUtils(activity).subscribeIkProduct(activity,"product-key","")
     }
 ```
 
@@ -144,7 +144,7 @@ Subscribe subscription
 
 ```kotlin 
     fun subscribeWithOffer(activity: Activity){
-        IkBillingHelper(activity).subscribeIkProduct(activity,"product-key","offer-key")
+    IKBillingUtils(activity).subscribeIkProduct(activity,"product-key","offer-key")
     }
 ```
 
@@ -153,38 +153,37 @@ Subscribe subscription
 ## Handle Billing Listeners 
 
 ```kotlin 
-    IkBillingHelper(this).setBillingEventListener(object : IkBillingEventListeners {
-            override fun onIkProductsPurchased(purchases: List<Purchase?>) {
+    IKBillingUtils(this).setIkEventListener(object : IkEventListener {
+            override fun onProductsPurchased(purchases: List<Purchase?>) {
 		Log.d(TAG, "onIkProductsPurchased")
             }
 
-            override fun onIkPurchaseAcknowledged(purchase: Purchase) {
+            override fun onPurchaseAcknowledged(purchase: Purchase) {
 		Log.d(TAG, "onIkPurchaseAcknowledged")
             }
 
-            override fun onIkPurchaseConsumed(purchase: Purchase) {
+            override fun onPurchaseConsumed(purchase: Purchase) {
 		Log.d(TAG, "onIkPurchaseConsumed")
             }
 
-            override fun onIkBillingError(error: IkBillingErrors) {
+            override fun onBillingError(error: IkBillingErrors) {
                 when (error) {
-                    	IkBillingErrors.DEVELOPER_ERROR -> Log.e(TAG, "Developer Error")
-            		IkBillingErrors.CLIENT_NOT_READY -> Log.e(TAG, "Client Not Ready")
-            		IkBillingErrors.CLIENT_DISCONNECTED -> Log.e(TAG, "Client Disconnected")
-            		IkBillingErrors.PRODUCT_NOT_EXIST -> Log.e(TAG, "Product Does Not Exist")
-            		IkBillingErrors.OFFER_NOT_EXIST -> Log.e(TAG, "Offer Does Not Exist")
-            		IkBillingErrors.BILLING_ERROR -> Log.e(TAG, "General Billing Error")
-            		IkBillingErrors.USER_CANCELED -> Log.e(TAG, "User Canceled")
-            		IkBillingErrors.SERVICE_UNAVAILABLE -> Log.e(TAG, "Service Unavailable")
-            		IkBillingErrors.BILLING_UNAVAILABLE -> Log.e(TAG, "Billing Unavailable")
-            		IkBillingErrors.ITEM_UNAVAILABLE -> Log.e(TAG, "Item Unavailable")
-            		IkBillingErrors.ITEM_ALREADY_OWNED -> Log.e(TAG, "Item Already Owned")
-            		IkBillingErrors.ITEM_NOT_OWNED -> Log.e(TAG, "Item Not Owned")
-            		IkBillingErrors.SERVICE_DISCONNECTED -> Log.e(TAG, "Service Disconnected")
-            		IkBillingErrors.ACKNOWLEDGE_ERROR -> Log.e(TAG, "Acknowledgment Error")
-            		IkBillingErrors.CONSUME_ERROR -> Log.e(TAG, "Consume Error")
-            		else -> Log.e(TAG, "Unknown Billing Error")
-		}
+                    IkBillingErrors.DEVELOPER_ERROR -> {}
+                    IkBillingErrors.PRODUCT_NOT_EXIST -> {}
+                    IkBillingErrors.OFFER_NOT_EXIST -> {}
+                    IkBillingErrors.USER_CANCELED -> {}
+                    IkBillingErrors.SERVICE_UNAVAILABLE -> {}
+                    IkBillingErrors.BILLING_UNAVAILABLE -> {}
+                    IkBillingErrors.ITEM_UNAVAILABLE -> {}
+                    IkBillingErrors.ERROR -> {}
+                    IkBillingErrors.ITEM_ALREADY_OWNED -> {}
+                    IkBillingErrors.SERVICE_DISCONNECTED -> {}
+                    IkBillingErrors.ACKNOWLEDGE_ERROR -> {}
+                    IkBillingErrors.ACKNOWLEDGE_WARNING -> {}
+                    IkBillingErrors.OLD_PURCHASE_TOKEN_NOT_FOUND -> {}
+                    IkBillingErrors.CONSUME_ERROR -> {}
+                    else -> {}
+                }
             }
 
         })

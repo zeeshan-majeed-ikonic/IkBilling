@@ -1,4 +1,4 @@
-package com.inapp.ikonic_billing.enum_errors
+package com.inapp.ikonic_billing.enum_class
 
 import androidx.annotation.Keep
 
@@ -10,11 +10,8 @@ import androidx.annotation.Keep
 @Keep
 enum class IkBillingErrors {
     DEVELOPER_ERROR,
-    CLIENT_NOT_READY,
-    CLIENT_DISCONNECTED,
     PRODUCT_NOT_EXIST,
     OFFER_NOT_EXIST,
-    BILLING_ERROR,
     USER_CANCELED,
     SERVICE_UNAVAILABLE,
     BILLING_UNAVAILABLE,
@@ -26,6 +23,5 @@ enum class IkBillingErrors {
     ACKNOWLEDGE_ERROR,
     ACKNOWLEDGE_WARNING,
     OLD_PURCHASE_TOKEN_NOT_FOUND,
-    INVALID_PRODUCT_TYPE_SET,
     CONSUME_ERROR
 }
