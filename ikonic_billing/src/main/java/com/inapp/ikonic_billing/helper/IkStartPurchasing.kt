@@ -170,8 +170,8 @@ class IkStartPurchasing {
                 logger("$productType item acknowledged")
                 when (productType) {
                     BillingClient.ProductType.INAPP -> purchasedInAppProductList.add(purchase)
-                    BillingClient.ProductType.SUBS  -> purchasedSubsProductList.add(purchase)
-                    else                            -> logger("Unknown product type while acknowledging purchase")
+                    else/*BillingClient.ProductType.SUBS*/  -> purchasedSubsProductList.add(purchase)
+//                    else                            -> logger("Unknown product type while acknowledging purchase")
                 }
                 ikClientListener?.onPurchasesUpdated()
                 ikEventListener?.onPurchaseAcknowledged(purchase)
